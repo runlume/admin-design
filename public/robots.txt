@@ -1,0 +1,5 @@
+# Runlume 标准后台设计 · 在线演示
+User-agent: *
+Allow: /
+
+Sitemap: https://ago.runlume.app/sitemap.xml

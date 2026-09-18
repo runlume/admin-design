@@ -1,0 +1,5 @@
+# Runlume 标准后台设计 · 宣传页
+User-agent: *
+Allow: /
+
+Sitemap: https://adesign.runlume.app/sitemap.xml
