@@ -118,6 +118,53 @@ const textOf = (html) =>
     .filter(Boolean)
     .join('\n')
 
+/*
+ * 逐页 Markdown 替代格式：页面是手写 HTML，没有 Markdown 源，
+ * 这里按页面的实际结构抽一份等价的 Markdown（标题、说明、入口、能力、组件索引、步骤、代码），
+ * 供 AI 引擎与机器读取使用；改版后由构建自动跟着变，不用手抄。
+ */
+const markdownOf = (html) => {
+  const flat = (value) =>
+    (value ?? '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .replace(/\s+([，。：、；！？）])/g, '$1')
+      .replace(/([（])\s+/g, '$1')
+      .replace(/：\s+/g, '：')
+      .trim()
+  const pick = (pattern) => flat(html.match(pattern)?.[1])
+  const all = (pattern, block) =>
+    [...(block ?? html).matchAll(pattern)].map((match) => match.slice(1).map((value) => flat(value)))
+  const lines = []
+  const h1 = pick(/<h1[^>]*>([\s\S]*?)<\/h1>/)
+  const kicker = pick(/<p class="kicker">([\s\S]*?)<\/p>/)
+  const lead = flat(html.match(/<p class="tagline">([\s\S]*?)<\/p>/)?.[1]) || pick(/<p class="lead">([\s\S]*?)<\/p>/)
+  if (kicker) lines.push(`> ${kicker}`)
+  lines.push(`# ${h1}`, '', lead, '')
+  const routes = all(/<strong>([\s\S]*?)<\/strong><span class="desc">([\s\S]*?)<\/span>[\s\S]*?<a href="([^"]+)"/g)
+  if (routes.length) lines.push('## 入口', '', ...routes.map(([name, desc, href]) => `- ${name}（${href}）：${desc}`), '')
+  const features = all(/<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)
+  if (features.length) lines.push('## 能力', '', ...features.map(([title, body]) => `- **${title}**：${body}`), '')
+  const cats = all(/<strong>([\s\S]*?)<\/strong>\s*<small>([\s\S]*?)<\/small>/g)
+  if (cats.length) lines.push('', '## 组件索引', '', ...cats.map(([name, keys]) => `- ${name}：${keys}`), '')
+  const stepsBlock = html.match(/<ol class="steps">([\s\S]*?)<\/ol>/)?.[1] ?? ''
+  const steps = [...stepsBlock.matchAll(/<li>([\s\S]*?)<\/li>/g)].map((match, index) => [
+    String(index + 1),
+    flat(match[1]),
+  ])
+  if (steps.length) lines.push('', '## 快速开始', '', ...steps.map(([n, text]) => `${Number(n)}. ${text}`), '')
+  const code = html.match(/<pre[^>]*>([\s\S]*?)<\/pre>/)?.[1]
+  if (code) lines.push('', '```bash', code.replace(/<[^>]+>/g, '').trim(), '```', '')
+  lines.push('', '## 相关入口', '', '- 文档站：https://adoc.runlume.app', '- 在线演示：https://ago.runlume.app', '- 源码（MIT）：https://github.com/runlume/admin-design', '')
+  return lines.filter((line, index, all) => line !== '' || all[index - 1] !== '').join('\n')
+}
+
+for (const [file, markdown] of [['index.html', 'index.md'], ['en.html', 'en.md']]) {
+  const html = await readFile(join(out, file), 'utf8')
+  await writeFile(join(out, markdown), `${markdownOf(html)}\n`)
+}
+console.log('逐页 Markdown：index.md · en.md')
+
 const llmsIndex = `# Runlume 标准后台设计
 
 > 从 Runlume 平台前端提取的标准后台模板：语义 Token、三种布局外壳、九类组件页、标准页型与零依赖 SVG 图表。MIT 许可，业务系统可整份复制。
@@ -129,6 +176,11 @@ const llmsIndex = `# Runlume 标准后台设计
 - [文档站](https://adoc.runlume.app)：组件说明、工程约定、动态菜单与前端权限
 - [在线演示](https://ago.runlume.app)：两个测试账号，权限不同
 - [源码](https://github.com/runlume/admin-design)：MIT 许可
+
+## Markdown
+
+- [中文页](https://adesign.runlume.app/index.md)
+- [English page](https://adesign.runlume.app/en.md)
 
 ## 全文
 
