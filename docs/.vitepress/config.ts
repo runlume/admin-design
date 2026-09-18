@@ -152,6 +152,11 @@ export default defineConfig({
     }
     return [
       ['link', { rel: 'canonical', href: url }],
+      // 机器可读替代格式：与官网一致，逐页给出 Markdown
+      [
+        'link',
+        { rel: 'alternate', type: 'text/markdown', href: `${url}.md`.replace(/\/\.md$/, '.md') },
+      ],
       ['meta', { property: 'og:title', content: shareTitle }],
       ['meta', { property: 'og:description', content: description }],
       ['meta', { property: 'og:url', content: url }],

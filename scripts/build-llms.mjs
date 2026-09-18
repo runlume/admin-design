@@ -5,8 +5,8 @@
  * 直接吃 `docs/` 下的 Markdown 源文件，构建后写进产物目录 —— 文案只有一份，不会跟页面脱节。
  * 约定沿用 LLM 发现入口的通行写法：第一行标题、引用块摘要、按页面分组链接、末尾指全文。
  */
-import { lstat, readdir, readFile, writeFile } from 'node:fs/promises'
-import { join, posix, relative, sep } from 'node:path'
+import { lstat, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
+import { dirname, join, posix, relative, sep } from 'node:path'
 
 const root = new URL('..', import.meta.url).pathname
 const source = join(root, 'docs')
@@ -90,6 +90,15 @@ ${documents.map((doc) => `- [${doc.title}](${doc.url})：${doc.summary}`).join('
 const full = documents
   .map((doc) => `# ${doc.title}\n\n来源：${doc.url}\n\n${doc.body}`)
   .join('\n\n---\n\n')
+
+// 逐页 Markdown 替代格式：与 HTML 同路径的 .md（/guide/intro → /guide/intro.md）
+for (const doc of documents) {
+  const path = doc.url.slice(origin.length).replace(/^\//, '')
+  const file = join(out, path === '' ? 'index.md' : `${path}.md`)
+  await mkdir(dirname(file), { recursive: true })
+  await writeFile(file, `${doc.body}\n`)
+}
+console.log(`逐页 Markdown：${documents.length} 个`)
 
 await writeFile(join(out, 'llms.txt'), index)
 await writeFile(join(out, 'llms-full.txt'), `${full}\n`)
