@@ -133,40 +133,55 @@ function createAppRouter(routes: RemoteRoute[]) {
       errorElement: <RouteError />,
       children: [
         { index: true, element: <DashboardPage /> },
-        { path: 'customers', element: guarded('customer:view', page(<CustomersPage />)) },
+        {
+          path: 'customers',
+          element: guarded('example.admin.customer.view', page(<CustomersPage />)),
+        },
         {
           path: 'customers/:customerId',
-          element: guarded('customer:view', page(<CustomerDetailPage />)),
+          element: guarded('example.admin.customer.view', page(<CustomerDetailPage />)),
         },
         { path: 'notifications', element: page(<NotificationsPage />) },
-        { path: 'settings', element: guarded('system:settings', page(<SettingsPage />)) },
+        {
+          path: 'settings',
+          element: guarded('example.admin.system.settings', page(<SettingsPage />)),
+        },
         // 组件总览按类型拆分，开发与构建产物都保留这些入口。
-        { path: 'design-system', element: guarded('design:view', page(<designPages.overview />)) },
+        {
+          path: 'design-system',
+          element: guarded('example.admin.design.view', page(<designPages.overview />)),
+        },
         {
           path: 'design-system/basic',
-          element: guarded('design:view', page(<designPages.basic />)),
+          element: guarded('example.admin.design.view', page(<designPages.basic />)),
         },
-        { path: 'design-system/form', element: guarded('design:view', page(<designPages.form />)) },
-        { path: 'design-system/data', element: guarded('design:view', page(<designPages.data />)) },
+        {
+          path: 'design-system/form',
+          element: guarded('example.admin.design.view', page(<designPages.form />)),
+        },
+        {
+          path: 'design-system/data',
+          element: guarded('example.admin.design.view', page(<designPages.data />)),
+        },
         {
           path: 'design-system/feedback',
-          element: guarded('design:view', page(<designPages.feedback />)),
+          element: guarded('example.admin.design.view', page(<designPages.feedback />)),
         },
         {
           path: 'design-system/navigation',
-          element: guarded('design:view', page(<designPages.navigation />)),
+          element: guarded('example.admin.design.view', page(<designPages.navigation />)),
         },
         {
           path: 'design-system/metrics',
-          element: guarded('design:view', page(<designPages.metrics />)),
+          element: guarded('example.admin.design.view', page(<designPages.metrics />)),
         },
         {
           path: 'design-system/theme',
-          element: guarded('design:view', page(<designPages.theme />)),
+          element: guarded('example.admin.design.view', page(<designPages.theme />)),
         },
         {
           path: 'design-system/icons',
-          element: guarded('design:view', page(<designPages.icons />)),
+          element: guarded('example.admin.design.view', page(<designPages.icons />)),
         },
         // 后台菜单下发的动态路由：路径、组件（或内嵌外链地址）与权限都来自菜单。
         ...routes.map((route) => ({

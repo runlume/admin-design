@@ -34,12 +34,12 @@ export const demoAccounts: Record<DemoRole, DemoAccount> = {
     password: 'runlume',
     displayName: '测试账号',
     permissions: [
-      'customer:view',
-      'customer:create',
-      'insight:view',
-      'report:view',
-      'system:settings',
-      'design:view',
+      'example.admin.customer.view',
+      'example.admin.customer.create',
+      'example.admin.insight.view',
+      'example.admin.report.view',
+      'example.admin.system.settings',
+      'example.admin.design.view',
     ],
   },
 }

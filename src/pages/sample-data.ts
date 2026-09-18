@@ -241,7 +241,7 @@ export const remoteMenuSample = {
       icon: 'chart-pie',
       group: 'dynamic',
       order: 1,
-      permission: 'insight:view',
+      permission: 'example.admin.insight.view',
       children: [
         {
           path: '/reports',
@@ -256,7 +256,7 @@ export const remoteMenuSample = {
           icon: 'scroll-text',
           component: 'audit-page',
           order: 2,
-          permission: 'audit:view',
+          permission: 'example.admin.audit.view',
         },
       ],
     },
