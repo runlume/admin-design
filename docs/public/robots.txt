@@ -1,0 +1,5 @@
+# Runlume 标准后台设计 · 文档站
+User-agent: *
+Allow: /
+
+Sitemap: https://adoc.runlume.app/sitemap.xml

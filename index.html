@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/brand/mark.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>%VITE_APP_TITLE%</title>
+    <script>
+      try {
+        // VITE_APP_DISABLE_DEVTOOL 为 true 时屏蔽 F12 / 右键 / 查看源码快捷键。
+        // 它只是提高随手打开的难度，不构成安全边界（详见 docs/guide/deploy.md）。
+        if ('%VITE_APP_DISABLE_DEVTOOL%' === 'true') {
+          document.addEventListener('contextmenu', (event) => event.preventDefault())
+          document.addEventListener('keydown', (event) => {
+            const key = event.key.toUpperCase()
+            if (
+              key === 'F12' ||
+              (event.ctrlKey && event.shiftKey && ['I', 'J', 'C'].includes(key)) ||
+              (event.metaKey && event.altKey && ['I', 'J', 'C'].includes(key)) ||
+              (event.ctrlKey && key === 'U')
+            ) {
+              event.preventDefault()
+            }
+          })
+        }
+      } catch (_) {}
+      try {
+        var a = JSON.parse(localStorage.getItem('%VITE_APP_STORAGE_PREFIX%' + 'appearance') || '{}').state
+        var p = a?.accessibility
+        document.documentElement.dataset.fontScale = [100, 112.5, 125, 150].includes(p?.fontScale) ? String(p.fontScale) : '100'
+        document.documentElement.dataset.fontWeight = ['default', 'medium', 'bold'].includes(p?.fontWeight) ? p.fontWeight : 'default'
+        document.documentElement.dataset.highContrast = String(p?.highContrast === true)
+        document.documentElement.dataset.reduceMotion = String(p?.reduceMotion === true)
+        document.documentElement.dataset.underlineLinks = String(p?.underlineLinks === true)
+        var t = a?.theme
+        document.documentElement.dataset.palette =
+          ['teal', 'blue', 'forest', 'violet', 'amber', 'graphite', 'custom'].includes(a?.palette) ? a.palette : 'teal'
+        var d =
+          t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+        var c = a?.customColors?.[d ? 'dark' : 'light']
+        document.documentElement.dataset.baseColor =
+          ['neutral', 'stone', 'zinc', 'mauve', 'olive', 'mist', 'taupe'].includes(c?.baseColor) ? c.baseColor : 'neutral'
+        document.documentElement.dataset.themeColor =
+          ['default', 'amber', 'blue', 'cyan', 'emerald', 'fuchsia', 'green', 'indigo', 'lime', 'orange', 'pink', 'purple', 'red', 'rose', 'sky', 'teal', 'violet', 'yellow'].includes(c?.themeColor) ? c.themeColor : 'default'
+        document.documentElement.classList.toggle('dark', d)
+        document.documentElement.style.colorScheme = d ? 'dark' : 'light'
+      } catch (_) {}
+    </script>
+    <meta name="description" content="在线演示：Runlume 标准后台设计的可交互示例，两个测试账号权限不同，可切换主题、布局与组件总览。" />
+    <meta name="theme-color" content="#086c6a" />
+    <link rel="canonical" href="https://ago.runlume.app/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Runlume" />
+    <meta property="og:title" content="Runlume 标准后台设计 · 在线演示" />
+    <meta property="og:description" content="在线演示：Runlume 标准后台设计的可交互示例，两个测试账号权限不同，可切换主题、布局与组件总览。" />
+    <meta property="og:url" content="https://ago.runlume.app/" />
+    <meta property="og:image" content="https://ago.runlume.app/og/ago.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Runlume 标准后台设计 · 在线演示" />
+    <meta name="twitter:description" content="在线演示：Runlume 标准后台设计的可交互示例，两个测试账号权限不同，可切换主题、布局与组件总览。" />
+    <meta name="twitter:image" content="https://ago.runlume.app/og/ago.png" />
+    <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@graph": [
+            {
+                  "@type": "Organization",
+                  "@id": "https://runlume.app/#organization",
+                  "name": "Runlume",
+                  "url": "https://runlume.app",
+                  "logo": "https://runlume.app/brand-icon.svg"
+            },
+            {
+                  "@type": "WebSite",
+                  "@id": "https://ago.runlume.app/#website",
+                  "url": "https://ago.runlume.app/",
+                  "name": "Runlume 标准后台设计 · 在线演示",
+                  "inLanguage": "zh-CN",
+                  "publisher": {
+                        "@id": "https://runlume.app/#organization"
+                  }
+            },
+            {
+                  "@type": "SoftwareApplication",
+                  "@id": "https://ago.runlume.app/#software",
+                  "name": "Runlume 标准后台设计",
+                  "applicationCategory": "DeveloperApplication",
+                  "operatingSystem": "Web",
+                  "url": "https://ago.runlume.app/",
+                  "isAccessibleForFree": true,
+                  "codeRepository": "https://github.com/runlume/admin-design",
+                  "license": "https://github.com/runlume/admin-design/blob/main/LICENSE",
+                  "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "CNY"
+                  }
+            }
+      ]
+}
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <div style="max-width: 46rem; margin: 48px auto; padding: 0 20px; line-height: 1.8">
+        <h1>Runlume 标准后台设计 · 在线演示</h1>
+        <p>
+          这是 Runlume 标准后台设计的可交互示例（React 19 + Vite + Tailwind，零图表库依赖）。
+          演示需要 JavaScript：登录页提供两个测试账号（admin / test），
+          权限不同，可对比菜单、路由与按钮三处的鉴权表现。
+        </p>
+        <ul>
+          <li><a href="https://adesign.runlume.app">项目宣传页</a></li>
+          <li><a href="https://adoc.runlume.app">文档站</a></li>
+          <li><a href="https://github.com/runlume/admin-design">源码（MIT 许可）</a></li>
+        </ul>
+      </div>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
