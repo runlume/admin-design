@@ -86,6 +86,7 @@ export default defineConfig({
     ['meta', { property: 'og:image:height', content: '630' }],
     ['meta', { name: 'twitter:image', content: `${siteOrigin}/og/adoc.png` }],
     // 访问统计。整页加载的计数由脚本自己完成，切路由的计数在 theme/index.ts 里补。
+    // @ts-ignore
     ...(analyticsEndpoint
       ? [
           [
