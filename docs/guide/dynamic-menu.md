@@ -37,14 +37,14 @@ description: 动态菜单与权限：后台下发菜单的字段约定、层级�
       "path": "/insight",
       "label": "经营分析",
       "icon": "chart-pie",
-      "permission": "insight:view",
+      "permission": "example.admin.insight.view",
       "children": [
         { "path": "/reports", "label": "报表中心", "component": "reports-page" },
         {
           "path": "/audit",
           "label": "操作日志",
           "component": "audit-page",
-          "permission": "audit:view"
+          "permission": "example.admin.audit.view"
         }
       ]
     },
@@ -138,29 +138,29 @@ description: 动态菜单与权限：后台下发菜单的字段约定、层级�
 
 权限码由身份服务下发（示例见 `src/app/session.ts`），判定规则：
 
-| 写法            | 含义             |
-| --------------- | ---------------- |
-| `customer:view` | 精确匹配         |
-| `report:*`      | 该模块下全部权限 |
-| `*`             | 全部权限         |
+| 写法                          | 含义             |
+| ----------------------------- | ---------------- |
+| `example.admin.customer.view` | 精确匹配         |
+| `example.admin.report.*`      | 该资源下全部权限 |
+| `*`                           | 全部权限         |
 
 三处用法：
 
 ```tsx
 // 1. 菜单：没有权限的项不出现（在 buildAppMenu 里过滤）
 // 2. 路由：菜单看不到，直接敲 URL 进来落 403
-{ path: 'audit', element: guarded('audit:view', page(<AuditPage />)) }
+{ path: 'audit', element: guarded('example.admin.audit.view', page(<AuditPage />)) }
 
 // 3. 按钮 / 区块：没有权限不渲染，或用 fallback 换成禁用态
-<Can permission="customer:create"><Button>新建客户</Button></Can>
-<Can permission="customer:export" fallback={<Button disabled>导出（无权限）</Button>}>…</Can>
+<Can permission="example.admin.customer.create"><Button>新建客户</Button></Can>
+<Can permission="example.admin.customer.export" fallback={<Button disabled>导出（无权限）</Button>}>…</Can>
 ```
 
 组件里读权限用 `usePermission()`：
 
 ```tsx
 const { can, canAny, canAll, permissions } = usePermission()
-if (can('customer:export')) { … }
+if (can('example.admin.customer.export')) { … }
 ```
 
 ### 两个测试账号
