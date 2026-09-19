@@ -7,7 +7,7 @@
 
 # 标准后台前端
 
-[![开源协议](https://img.shields.io/github/license/runlume/admin-design?style=flat-square&label=%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE&color=97ca00)](LICENSE)
+[![开源协议](https://img.shields.io/github/license/runlume/admin-design?style=flat-square&label=%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE&color=blue)](LICENSE)
 [![当前版本](https://img.shields.io/github/package-json/v/runlume/admin-design?style=flat-square&label=%E5%BD%93%E5%89%8D%E7%89%88%E6%9C%AC&color=007ec6)](https://github.com/runlume/admin-design/releases)
 [![技术栈](https://img.shields.io/badge/React%2019%20%C2%B7%20TypeScript%20%C2%B7%20Vite%20%2B%20Tailwind-1f6feb?style=flat-square)](docs/guide/intro.md)
 [![校验](https://img.shields.io/badge/pnpm%20check-%E5%85%A8%E7%BB%BF-2ea44f?style=flat-square)](#校验)
@@ -136,5 +136,6 @@ src/
 
 ## 开源协议
 
-[MIT](LICENSE)，Copyright (c) 2026 Runlume。可以自由复制进商业产品，只需保留版权与许可声明；
+[Apache-2.0](LICENSE)，Copyright 2026 Runlume。可以自由复制进商业产品，只需保留版权与许可声明，
+并随分发附上 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)；协议含显式专利授权，但不授予商标权。
 `public/brand/` 下的品牌标识属于品牌资产，使用时替换成自己的。细节见 [docs/guide/license.md](docs/guide/license.md)。

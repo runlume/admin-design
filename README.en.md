@@ -7,7 +7,7 @@
 
 # Admin Frontend
 
-[![License](https://img.shields.io/github/license/runlume/admin-design?style=flat-square&label=license&color=97ca00)](LICENSE)
+[![License](https://img.shields.io/github/license/runlume/admin-design?style=flat-square&label=license&color=blue)](LICENSE)
 [![Version](https://img.shields.io/github/package-json/v/runlume/admin-design?style=flat-square&label=version&color=007ec6)](https://github.com/runlume/admin-design/releases)
 [![Stack](https://img.shields.io/badge/React%2019%20%C2%B7%20TypeScript%20%C2%B7%20Vite%20%2B%20Tailwind-1f6feb?style=flat-square)](docs/guide/intro.md)
 [![Checks](https://img.shields.io/badge/pnpm%20check-passing-2ea44f?style=flat-square)](#verification)
@@ -144,6 +144,7 @@ Authentication and sessions, the API client and error codes, and the permission 
 
 ## License
 
-[MIT](LICENSE), Copyright (c) 2026 Runlume. Copy it into commercial products freely — just keep the copyright and
-license notice. The marks under `public/brand/` are brand assets, so replace them with your own.
-Details: [docs/guide/license.md](docs/guide/license.md).
+[Apache-2.0](LICENSE), Copyright 2026 Runlume. Copy it into commercial products freely — just keep the copyright
+and license notice and ship [LICENSE](LICENSE) plus [NOTICE](NOTICE) with any distribution. The license grants an
+express patent license but no trademark rights. The marks under `public/brand/` are brand assets, so replace them
+with your own. Details: [docs/guide/license.md](docs/guide/license.md).

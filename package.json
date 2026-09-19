@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "description": "标准后台设计：从 Runlume 平台前端提取的主题、布局外壳、公共组件与标准页型",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/runlume/admin-design.git"

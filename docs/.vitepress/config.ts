@@ -222,7 +222,7 @@ export default defineConfig({
     externalLinkIcon: true,
     footer: {
       message: '语义 Token · 布局外壳 · 公共组件 · 标准页型',
-      copyright: 'Runlume 标准后台设计 · MIT License',
+      copyright: 'Runlume 标准后台设计 · Apache-2.0 License',
     },
   },
 })
