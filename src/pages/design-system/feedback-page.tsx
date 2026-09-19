@@ -275,17 +275,17 @@ export function DesignFeedbackPage() {
         <Section
           className="xl:col-span-2"
           title="权限"
-          description="同一套权限码在菜单、路由与按钮三处生效；演示账号有 design:view、没有 audit:view。"
+          description="同一套权限码在菜单、路由与按钮三处生效；演示账号有 example.admin.design.view、没有 example.admin.audit.view。"
         >
           <div className="flex flex-wrap items-center gap-3">
-            <Can permission="design:view">
+            <Can permission="example.admin.design.view">
               <Button variant="outline">
                 <ShieldCheck aria-hidden="true" />
                 有权限的操作
               </Button>
             </Can>
             <Can
-              permission="audit:view"
+              permission="example.admin.audit.view"
               fallback={
                 <Button variant="outline" disabled>
                   <Ban aria-hidden="true" />
@@ -296,11 +296,11 @@ export function DesignFeedbackPage() {
               <Button variant="outline">导出审计日志</Button>
             </Can>
             <span className="text-xs text-muted-foreground">
-              通配写法：`report:*` 覆盖该模块全部权限，`*` 表示全部。
+              通配写法：`example.admin.report.*` 覆盖该资源全部权限，`*` 表示全部。
             </span>
           </div>
           <div className="rounded-xl border p-6 text-sm text-muted-foreground">
-            <RequirePermission permission="design:view">
+            <RequirePermission permission="example.admin.design.view">
               有权限时渲染这段内容；没有权限时同一处会渲染 403（ForbiddenPage）。
             </RequirePermission>
           </div>

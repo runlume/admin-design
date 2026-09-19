@@ -5,7 +5,7 @@ import { PageHeader } from '@/components/page'
 import { auditLogs, type AuditLog } from '@/pages/sample-data'
 
 /**
- * 操作日志：后台菜单里带 `audit:view` 才可见；没有权限的用户直接访问这里会落到 403。
+ * 操作日志：后台菜单里带 `example.admin.audit.view` 才可见；没有权限的用户直接访问这里会落到 403。
  */
 export function AuditPage() {
   const { t } = useTranslation()

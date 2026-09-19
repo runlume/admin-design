@@ -118,7 +118,7 @@ src/
 - **偏好只存浏览器**：主题、配色、无障碍、通知偏好、顶栏操作顺序、侧栏宽度/圆角/动画/布局模式、表格列宽、筛选预设、快捷键都在 `localStorage`，键名统一带 `VITE_APP_STORAGE_PREFIX`。
 - **菜单可以来自后台**：`src/app/remote-menu.ts` 的 `fetchRemoteMenu()` 换成真实接口即可；菜单项支持**多层级（`children`）**、**外链与打开方式（新窗口 / 当前窗口 / iframe 内嵌）**、图标名、i18n key、排序、隐藏与权限码。动态页面的组件由本地注册表（`src/app/remote-pages.tsx`）提供，接口只能引用不能新增。
 - **两个测试账号**：登录页可一键填入 `admin`（`*` 全量权限）与 `test`（受限权限），用来看菜单、路由守卫与按钮鉴权的差异，见 `src/app/session.ts`。
-- **前端权限三处生效**：菜单按权限过滤、路由用 `RequirePermission` 落 403、按钮用 `<Can>` 隐藏或置灰；权限码支持 `*` 与 `module:*`，示例会话见 `src/app/session.ts`。
+- **前端权限三处生效**：菜单按权限过滤、路由用 `RequirePermission` 落 403、按钮用 `<Can>` 隐藏或置灰；权限码支持 `*` 与 `<命名空间>.<资源>.*`，示例会话见 `src/app/session.ts`。
 - **无障碍**：所有交互可用键盘完成；对话框有焦点管理；表格、树、表单控件带 ARIA 属性；语义色对比度按 AA 校验（有 Playwright 断言）。
 - **零依赖图表**：折线/柱状/环形/迷你图/热力/雷达/漏斗/甘特都在 `src/components/charts.tsx`、`column-chart.tsx` 里自绘，需要更多图表时先考虑自绘或业务侧引入。
 

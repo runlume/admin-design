@@ -229,8 +229,8 @@ export function CustomersPage() {
         title={t('sample.customersTitle')}
         description={t('sample.customersDescription')}
         actions={
-          // 按钮级鉴权：没有 customer:create 的账号看不到这个入口。
-          <Can permission="customer:create">
+          // 按钮级鉴权：没有 example.admin.customer.create 的账号看不到这个入口。
+          <Can permission="example.admin.customer.create">
             <Button
               onClick={() => {
                 setEditing(undefined)
@@ -330,9 +330,9 @@ export function CustomersPage() {
                 <Plus aria-hidden="true" />
                 {t('sample.create')}
               </Button>
-              {/* 没有 customer:export 时保留禁用态，让用户知道"有这个功能但没权限"。 */}
+              {/* 没有 example.admin.customer.export 时保留禁用态，让用户知道"有这个功能但没权限"。 */}
               <Can
-                permission="customer:export"
+                permission="example.admin.customer.export"
                 fallback={
                   <Button
                     variant="outline"

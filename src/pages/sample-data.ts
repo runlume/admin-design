@@ -227,8 +227,8 @@ export const auditLogs: AuditLog[] = [
  *
  * 演示四件事：
  * - 层级菜单：「经营分析」是容器，下面挂「报表中心」与「操作日志」；
- * - 权限继承：父级要求 `insight:view`，子项不写权限就跟随父级；
- * - 权限过滤：「操作日志」自己要求 `audit:view`，示例会话没有 → 菜单不出现、直接访问落 403；
+ * - 权限继承：父级要求 `example.admin.insight.view`，子项不写权限就跟随父级；
+ * - 权限过滤：「操作日志」自己要求 `example.admin.audit.view`，示例会话没有 → 菜单不出现、直接访问落 403；
  * - 外链与打开方式：官网、GitHub 仓库与「经营分析」同级，都是新窗口打开的站外链接；
  *   `/tools/docs` 用 iframe 内嵌文档站（跑 `pnpm docs:dev` 后可见，站点不允许内嵌时会空白）。
  */

@@ -124,7 +124,7 @@ Component capabilities, props and usage live in the docs site: [components/](doc
 - **Preferences stay in the browser**: theme, palette, accessibility, notifications, header action order, sidebar width/radius/animation/layout mode, table column widths, filter presets and shortcuts live in `localStorage`, all keyed with `VITE_APP_STORAGE_PREFIX`.
 - **Menus can come from the backend**: replace `fetchRemoteMenu()` in `src/app/remote-menu.ts`; items support **nesting (`children`)**, **external links with an open mode (new window / same window / iframe)**, icon names, i18n keys, ordering, `hidden` and permission codes. Dynamic pages must be registered locally (`src/app/remote-pages.tsx`) — the API can only reference them, never add new ones.
 - **Two test accounts**: the sign-in page fills `admin` (`*` — everything) and `test` (restricted) so you can see menus, route guards and button permissions differ.
-- **Frontend permissions in three places**: menus are filtered, routes fall back to 403 through `RequirePermission`, buttons hide or disable through `<Can>`; codes support `*` and `module:*`.
+- **Frontend permissions in three places**: menus are filtered, routes fall back to 403 through `RequirePermission`, buttons hide or disable through `<Can>`; codes support `*` and `<namespace>.<resource>.*`.
 - **Accessibility**: everything is keyboard reachable, dialogs manage focus, tables/trees/controls carry ARIA attributes, and semantic contrast is asserted at WCAG AA in Playwright.
 - **Zero-dependency charts**: line/column/donut/mini/heatmap/radar/funnel/gantt are hand-drawn in `src/components/charts.tsx` and `column-chart.tsx`; when you need more, draw it or add a library on the business side.
 

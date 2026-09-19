@@ -175,10 +175,10 @@ toast.info(t('notifications.settingsHint')) // 普通：信息 + info 色
 ## 权限：Can / RequirePermission
 
 ```tsx
-<Can permission="customer:create"><Button>新建客户</Button></Can>
-<Can permission="customer:export" fallback={<Button disabled>导出</Button>}>…</Can>
+<Can permission="example.admin.customer.create"><Button>新建客户</Button></Can>
+<Can permission="example.admin.customer.export" fallback={<Button disabled>导出</Button>}>…</Can>
 
-<RequirePermission permission="audit:view"><AuditTable /></RequirePermission>
+<RequirePermission permission="example.admin.audit.view"><AuditTable /></RequirePermission>
 ```
 
 - `Can`：按钮 / 区块级，没有权限就不渲染，或用 `fallback` 换成禁用态。

@@ -6,7 +6,7 @@ import type { PermissionCode } from '@/lib/permissions'
  * 示例会话：两个不同角色的测试账号。接真实身份服务时，
  * 把 `demoAccounts` 换成登录响应（用户信息 + 权限码），`signIn()` 换成真实登录调用。
  *
- * 权限码约定见 `src/lib/permissions.ts`：`*` 全部、`module:*` 模块内全部、其余精确匹配。
+ * 权限码约定见 `src/lib/permissions.ts`：`*` 全部、`<命名空间>.<资源>.*` 资源内全部、其余精确匹配。
  */
 export type DemoRole = 'admin' | 'test'
 
