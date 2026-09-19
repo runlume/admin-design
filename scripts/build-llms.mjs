@@ -72,7 +72,7 @@ for (const file of await collect(source)) {
 const index = `# Runlume 标准后台设计 · 文档
 
 > 语义 Token、三种布局外壳、九类组件页、标准页型，以及动态菜单、前端权限、主题与工程约定。
-> 源码 MIT 许可：https://github.com/runlume/admin-design
+> 源码 Apache-2.0 许可：https://github.com/runlume/admin-design
 
 ## 站点
 

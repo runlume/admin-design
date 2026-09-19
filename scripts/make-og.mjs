@@ -62,7 +62,7 @@ const page_html = (card) => `<!doctype html>
     <h1>${card.title}</h1>
     <p>${card.subtitle}</p>
   </div>
-  <div class="foot"><span class="tag">MIT License</span><span>${card.url}</span></div>
+  <div class="foot"><span class="tag">Apache-2.0 License</span><span>${card.url}</span></div>
 </body></html>`
 
 await mkdir(out, { recursive: true })
@@ -75,4 +75,3 @@ for (const card of cards) {
   console.log(`public/og/${card.file}`)
 }
 await browser.close()
-

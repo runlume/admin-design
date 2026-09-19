@@ -155,7 +155,7 @@ const markdownOf = (html) => {
   if (steps.length) lines.push('', '## 快速开始', '', ...steps.map(([n, text]) => `${Number(n)}. ${text}`), '')
   const code = html.match(/<pre[^>]*>([\s\S]*?)<\/pre>/)?.[1]
   if (code) lines.push('', '```bash', code.replace(/<[^>]+>/g, '').trim(), '```', '')
-  lines.push('', '## 相关入口', '', '- 文档站：https://adoc.runlume.app', '- 在线演示：https://ago.runlume.app', '- 源码（MIT）：https://github.com/runlume/admin-design', '')
+  lines.push('', '## 相关入口', '', '- 文档站：https://adoc.runlume.app', '- 在线演示：https://ago.runlume.app', '- 源码（Apache-2.0）：https://github.com/runlume/admin-design', '')
   return lines.filter((line, index, all) => line !== '' || all[index - 1] !== '').join('\n')
 }
 
@@ -167,7 +167,7 @@ console.log('逐页 Markdown：index.md · en.md')
 
 const llmsIndex = `# Runlume 标准后台设计
 
-> 从 Runlume 平台前端提取的标准后台模板：语义 Token、三种布局外壳、九类组件页、标准页型与零依赖 SVG 图表。MIT 许可，业务系统可整份复制。
+> 从 Runlume 平台前端提取的标准后台模板：语义 Token、三种布局外壳、九类组件页、标准页型与零依赖 SVG 图表。Apache-2.0 许可，业务系统可整份复制。
 
 ## 入口
 
@@ -175,7 +175,7 @@ const llmsIndex = `# Runlume 标准后台设计
 - [English landing](${origin}/en.html)
 - [文档站](https://adoc.runlume.app)：组件说明、工程约定、动态菜单与前端权限
 - [在线演示](https://ago.runlume.app)：两个测试账号，权限不同
-- [源码](https://github.com/runlume/admin-design)：MIT 许可
+- [源码](https://github.com/runlume/admin-design)：Apache-2.0 许可
 
 ## Markdown
 
@@ -195,6 +195,6 @@ for (const page of pages) {
 }
 await writeFile(
   join(out, 'llms-full.txt'),
-  `${fullParts.join('\n\n---\n\n')}\n\n---\n\n# 其他入口\n\n- 文档站：https://adoc.runlume.app\n- 在线演示：https://ago.runlume.app\n- 源码（MIT）：https://github.com/runlume/admin-design\n`,
+  `${fullParts.join('\n\n---\n\n')}\n\n---\n\n# 其他入口\n\n- 文档站：https://adoc.runlume.app\n- 在线演示：https://ago.runlume.app\n- 源码（Apache-2.0）：https://github.com/runlume/admin-design\n`,
 )
 console.log('sitemap.xml · llms.txt · llms-full.txt')

@@ -1,6 +1,6 @@
 # Runlume 标准后台设计 · 在线演示
 
-> 标准后台设计模板的可交互演示（React 19 + Vite + Tailwind CSS，零图表库依赖，MIT 许可）。
+> 标准后台设计模板的可交互演示（React 19 + Vite + Tailwind CSS，零图表库依赖，Apache-2.0 许可）。
 > 演示需要 JavaScript；进入后可用两个测试账号（admin / test）登录，两者权限不同，
 > 便于对比菜单过滤、路由守卫与按钮级鉴权的表现。
 
@@ -9,7 +9,7 @@
 - [宣传页](https://adesign.runlume.app)：项目说明、能力清单与快速开始
 - [文档站](https://adoc.runlume.app)：组件参考、工程约定、动态菜单与前端权限
 - [在线演示](https://ago.runlume.app)：本页（登录页为默认入口）
-- [源码](https://github.com/runlume/admin-design)：MIT 许可
+- [源码](https://github.com/runlume/admin-design)：Apache-2.0 许可
 
 ## 演示里能看到什么
 
