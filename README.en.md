@@ -36,6 +36,27 @@ pnpm build          # output in dist/
 pnpm preview        # http://localhost:3201 to preview the build
 ```
 
+## Use as an npm component library
+
+The base controls are also built as `@runlume/admin-ui`; the complete template and demo app remain in this
+repository. After the package is published, install it with:
+
+```bash
+pnpm add @runlume/admin-ui
+```
+
+```tsx
+import { Button, Table } from '@runlume/admin-ui'
+import '@runlume/admin-ui/styles.css'
+```
+
+The package requires React 19. Maintainers run `pnpm pack --dry-run` before publishing; it rebuilds
+`dist-package/` and lists the exact package contents. Brand assets, example pages, app sessions, and notification
+state are not part of the library exports.
+
+For a release, run `docs/scripts/publish-admin-ui-npm.sh`. It collects a npm Granular Access Token with
+`Bypass 2FA` through a hidden macOS dialog and never stores the credential in the repository or normal logs.
+
 `pnpm dev` prints a branded banner once per process and lists both the Local and Network URLs
 (`server.host: true`, so a phone on the same network can open the Network address). Brand copy lives in
 `src/lib/brand-info.ts`, the terminal banner in `scripts/banner.ts`, and the F12 console output in

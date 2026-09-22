@@ -23,9 +23,6 @@ importers:
       clsx:
         specifier: 2.1.1
         version: 2.1.1
-      i18next:
-        specifier: 26.4.2
-        version: 26.4.2(typescript@6.0.3)
       lucide-react:
         specifier: 1.44.0
         version: 1.44.0(react@19.3.0)
@@ -35,18 +32,9 @@ importers:
       radix-ui:
         specifier: 1.6.7
         version: 1.6.7(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      react:
-        specifier: ^19.2.8
-        version: 19.3.0
-      react-dom:
-        specifier: ^19.2.8
-        version: 19.3.0(react@19.3.0)
       react-hook-form:
         specifier: 7.87.0
         version: 7.87.0(react@19.3.0)
-      react-i18next:
-        specifier: 17.0.13
-        version: 17.0.13(i18next@26.4.2(typescript@6.0.3))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(typescript@6.0.3)
       react-router:
         specifier: 7.18.3
         version: 7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -90,6 +78,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^6.1.1
         version: 6.1.1(vite@8.3.0(@types/node@24.13.4)(jiti@2.7.0))
+      i18next:
+        specifier: 26.4.2
+        version: 26.4.2(typescript@6.0.3)
       jsdom:
         specifier: 30.0.1
         version: 30.0.1
@@ -99,6 +90,15 @@ importers:
       prettier:
         specifier: 3.9.6
         version: 3.9.6
+      react:
+        specifier: ^19.2.8
+        version: 19.3.0
+      react-dom:
+        specifier: ^19.2.8
+        version: 19.3.0(react@19.3.0)
+      react-i18next:
+        specifier: 17.0.13
+        version: 17.0.13(i18next@26.4.2(typescript@6.0.3))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(typescript@6.0.3)
       tailwindcss:
         specifier: 4.3.3
         version: 4.3.3

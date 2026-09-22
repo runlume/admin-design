@@ -33,6 +33,25 @@ pnpm build          # 产物在 dist/
 pnpm preview        # http://localhost:3201 预览构建产物
 ```
 
+## 作为 npm 组件库使用
+
+基础控件可独立构建为 `@runlume/admin-ui`，完整模板和演示应用仍保留在本仓库。发布后安装：
+
+```bash
+pnpm add @runlume/admin-ui
+```
+
+```tsx
+import { Button, Table } from '@runlume/admin-ui'
+import '@runlume/admin-ui/styles.css'
+```
+
+组件库要求 React 19。仓库维护者发布前运行 `pnpm pack --dry-run`，该命令会自动重新构建
+`dist-package/` 并检查最终包内容。品牌资源、示例页面、应用会话和通知状态不属于组件库出口。
+
+正式发布使用 `docs/scripts/publish-admin-ui-npm.sh`，通过 macOS 隐藏输入框读取具备
+`Bypass 2FA` 权限的 npm Granular Access Token；凭据不会写入仓库或普通日志。
+
 `pnpm dev` 启动时终端会打出品牌横幅（每个进程只打一次），并同时给出 Local 与 Network 两个地址
 （`server.host: true`，手机或同网段设备可用 Network 地址访问）。品牌文案在 `src/lib/brand-info.ts`，
 终端横幅在 `scripts/banner.ts`，浏览器 F12 控制台的品牌输出在 `src/lib/brand-console.ts`。
