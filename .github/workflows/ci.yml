@@ -23,7 +23,8 @@ jobs:
       # 文档站独立构建，含死链检查
       - run: pnpm docs:build
       - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm test:e2e
+      # 对生产构建跑浏览器测试，防止 tree-shaking 裁掉仅靠副作用加载的初始化代码。
+      - run: PLAYWRIGHT_WEB_SERVER_COMMAND="pnpm build:test && pnpm preview --host 127.0.0.1 --port 3200" pnpm test:e2e
       - if: always()
         uses: actions/upload-artifact@v4
         with:
