@@ -38,7 +38,7 @@ export function DesignOverviewPage() {
       <div className="grid gap-6 xl:grid-cols-2">
         <Section
           className="xl:col-span-2"
-          title="@runlume/admin-ui 0.2.1 已发布"
+          title="@runlume/admin-ui 0.2.2 已发布"
           description="基础控件、数据表格、筛选分页、图表、页面状态、日历、穿梭框、评分、可调整面板与拖放列表均可通过 npm 直接安装。"
         >
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border bg-muted/30 px-4 py-3">
