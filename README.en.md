@@ -52,17 +52,8 @@ import '@runlume/admin-ui/styles.css'
 
 The package supports React 18.2–19, ESM, and CommonJS. Fine-grained imports are available from paths such as
 `@runlume/admin-ui/components/data-table` and `@runlume/admin-ui/ui/button`. Missing host translations fall back
-to readable English instead of exposing i18n keys. Maintainers run `pnpm test:package` to pack and install the
-tarball into an empty React 18 project and verify ESM, CommonJS, subpath, and stylesheet exports. Brand assets,
-example pages, app sessions, and notification state are not part of the library exports.
-
-For a release, run `docs/scripts/publish-admin-ui-npm.sh`. It collects a npm Granular Access Token with
-`Bypass 2FA` through a hidden macOS dialog and never stores the credential in the repository or normal logs.
-
-`pnpm dev` prints a branded banner once per process and lists both the Local and Network URLs
-(`server.host: true`, so a phone on the same network can open the Network address). Brand copy lives in
-`src/lib/brand-info.ts`, the terminal banner in `scripts/banner.ts`, and the F12 console output in
-`src/lib/brand-console.ts`.
+to readable English instead of exposing i18n keys. Brand assets, example pages, and application state are not
+part of the library exports.
 
 ## Verification
 

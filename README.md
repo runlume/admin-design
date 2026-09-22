@@ -48,14 +48,7 @@ import '@runlume/admin-ui/styles.css'
 
 支持 React 18.2–19、ESM 与 CommonJS；需要更细粒度加载时可从
 `@runlume/admin-ui/components/data-table` 或 `@runlume/admin-ui/ui/button` 引入。公共组件缺少宿主翻译时会显示内置英文兜底，不会直接暴露 i18n key。
-仓库维护者发布前运行 `pnpm test:package`，它会打包并在空目录中用 React 18 验证 ESM、CommonJS、子路径与样式出口。品牌资源、示例页面、应用会话和通知状态不属于组件库出口。
-
-正式发布使用 `docs/scripts/publish-admin-ui-npm.sh`，通过 macOS 隐藏输入框读取具备
-`Bypass 2FA` 权限的 npm Granular Access Token；凭据不会写入仓库或普通日志。
-
-`pnpm dev` 启动时终端会打出品牌横幅（每个进程只打一次），并同时给出 Local 与 Network 两个地址
-（`server.host: true`，手机或同网段设备可用 Network 地址访问）。品牌文案在 `src/lib/brand-info.ts`，
-终端横幅在 `scripts/banner.ts`，浏览器 F12 控制台的品牌输出在 `src/lib/brand-console.ts`。
+品牌资源、示例页面以及应用状态不属于组件库出口。
 
 ## 校验
 
