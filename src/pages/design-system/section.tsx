@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { PageHeader } from '@/components/page'
 
@@ -22,7 +22,10 @@ export function Section({
   return (
     <Card className={className}>
       <CardHeader>
-        <CardTitle className="text-base">{title}</CardTitle>
+        {/* 总览页的分组就是页面章节，用 h2 与页头 h1 衔接；组件内部的 h3 才有正确层级。 */}
+        <h2 data-slot="card-title" className="text-base leading-none font-semibold">
+          {title}
+        </h2>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent className={cn('space-y-4', contentClassName)}>{children}</CardContent>
