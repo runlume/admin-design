@@ -37,6 +37,24 @@ export function DesignOverviewPage() {
       <DesignHeader title={t('gallery.overview')} />
       <div className="grid gap-6 xl:grid-cols-2">
         <Section
+          className="xl:col-span-2"
+          title="@runlume/admin-ui 0.2.1 已发布"
+          description="基础控件、数据表格、筛选分页、图表、页面状态、日历、穿梭框、评分、可调整面板与拖放列表均可通过 npm 直接安装。"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border bg-muted/30 px-4 py-3">
+            <code className="text-sm">pnpm add @runlume/admin-ui</code>
+            <a
+              href="https://www.npmjs.com/package/@runlume/admin-ui"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+            >
+              查看 npm 包
+              <ArrowRight aria-hidden="true" className="size-4" />
+            </a>
+          </div>
+        </Section>
+        <Section
           title="品牌与标识"
           description="这里展示的是 Runlume 的品牌资产（public/brand，深浅模式各一份）；业务系统对外发布前请替换。"
         >
