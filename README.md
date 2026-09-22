@@ -54,7 +54,7 @@ import '@runlume/admin-ui/styles.css'
 
 只记录对外可见的变化；完整提交历史见 [Releases](https://github.com/runlume/admin-design/releases)。
 
-### 未发布
+### 0.2.3（2026-09-22）
 
 - 无障碍：模态浮层（对话框、抽屉、下拉菜单、右键菜单、选择器）打开时，背景同时标记 `aria-hidden` 与 `inert`，修复
   axe `aria-hidden-focus` 以及"背景控件仍能 Tab 进去"的问题，关闭后自动撤销，浮层自身不受影响。

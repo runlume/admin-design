@@ -60,7 +60,7 @@ part of the library exports.
 Only user-visible changes are listed here; see
 [Releases](https://github.com/runlume/admin-design/releases) for the full history.
 
-### Unreleased
+### 0.2.3 (2026-09-22)
 
 - Accessibility: while a modal overlay (dialog, sheet, dropdown menu, context menu, select) is open, the
   background is marked with both `aria-hidden` and `inert`, fixing the axe `aria-hidden-focus` violation

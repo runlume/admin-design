@@ -53,7 +53,7 @@ features:
 
 ## 快速开始
 
-只使用公共组件时，安装已发布的 `0.2.2`：
+只使用公共组件时，安装已发布的 `0.2.3`：
 
 ```bash
 pnpm add @runlume/admin-ui
