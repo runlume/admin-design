@@ -11,6 +11,8 @@ import { PasswordStrength } from '@/components/password-strength'
 import { FileUpload, type UploadFile } from '@/components/ui/file-upload'
 import { ImagePreview } from '@/components/image-preview'
 import { Mention } from '@/components/mention'
+import { Calendar } from '@/components/calendar'
+import { Transfer, type TransferItem } from '@/components/transfer'
 import { Button } from '@/components/ui/button'
 import { DateInput } from '@/components/ui/date-input'
 import { Input } from '@/components/ui/input'
@@ -44,6 +46,14 @@ const organizationOptions: CascaderOption[] = [
   },
 ]
 
+const roleOptions: TransferItem[] = [
+  { value: 'viewer', label: '查看者', description: '只读访问业务数据' },
+  { value: 'operator', label: '操作员', description: '处理日常业务操作' },
+  { value: 'auditor', label: '审计员', description: '查看审计记录' },
+  { value: 'owner', label: '负责人', description: '管理成员与配置' },
+  { value: 'system', label: '系统角色', disabled: true },
+]
+
 /** 表单与选择：控件组合、验证码、密码强度、级联选择与固定操作条。 */
 export function DesignFormPage() {
   const { t } = useTranslation()
@@ -56,6 +66,8 @@ export function DesignFormPage() {
   const [uploads, setUploads] = useState<UploadFile[]>([])
   const [comment, setComment] = useState('')
   const [schedule, setSchedule] = useState('2026-09-16T09:30')
+  const [calendarDate, setCalendarDate] = useState('2026-09-22')
+  const [roles, setRoles] = useState<string[]>(['viewer'])
   return (
     <>
       <DesignHeader title={t('gallery.form')} />
@@ -166,6 +178,23 @@ export function DesignFormPage() {
             />
           </div>
           <PasswordStrength password={password} />
+        </Section>
+
+        <Section title="完整日历" description="月视图、跨月选择、今天快捷入口与日期范围限制。">
+          <Calendar
+            value={calendarDate}
+            onValueChange={setCalendarDate}
+            min="2026-08-01"
+            max="2026-12-31"
+          />
+          <p className="text-xs text-muted-foreground">已选择：{calendarDate}</p>
+        </Section>
+
+        <Section
+          title="穿梭框"
+          description="搜索、禁用项和双向批量移动，适合角色、成员与资源授权。"
+        >
+          <Transfer items={roleOptions} value={roles} onValueChange={setRoles} />
         </Section>
 
         <Section

@@ -14,8 +14,11 @@ import { Tree, type TreeItem } from '@/components/tree'
 import { TreeTable } from '@/components/tree-table'
 import { TableToolbar } from '@/components/table-toolbar'
 import { BulkActions } from '@/components/bulk-actions'
+import { ResizablePanel } from '@/components/resizable-panel'
+import { SortableList, type SortableItem } from '@/components/sortable-list'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Badge } from '@/components/ui/badge'
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
 import { organizationUnits, type OrganizationUnit } from '@/pages/sample-data'
 import { type TreeNode } from '@/lib/tree'
@@ -23,6 +26,7 @@ import { readColumnOrder } from '@/lib/table-prefs'
 import { Section, DesignHeader } from './section'
 
 type Row = { id: string; name: string; owner: string; status: string; updatedAt: string }
+type SortableField = SortableItem & { label: string; description: string }
 
 /** 大数据量示例：1000 行，用来演示虚拟滚动只渲染可视窗口。 */
 const largeRows: Row[] = Array.from({ length: 1000 }, (_, index) => ({
@@ -59,6 +63,12 @@ export function DesignDataPage() {
   const [treeCheckable, setTreeCheckable] = useState(false)
   // 可编辑表格已保存的行：示例里只用来演示 onChange，真实项目在这里落库
   const [, setEditableRows] = useState<{ id: string; values: Record<string, string> }[]>([])
+  const [sortableFields, setSortableFields] = useState<SortableField[]>([
+    { id: 'name', label: '客户名称', description: '主展示字段' },
+    { id: 'owner', label: '负责人', description: '用于分组与筛选' },
+    { id: 'status', label: '状态', description: '固定业务字段', disabled: true },
+    { id: 'updatedAt', label: '更新时间', description: '默认倒序排列' },
+  ])
 
   const columns: ColumnDef<Row>[] = [
     { accessorKey: 'id', header: 'ID', size: 120 },
@@ -338,6 +348,44 @@ export function DesignDataPage() {
             />
           </Section>
         </div>
+
+        <Section
+          title="分割面板与拖放排序"
+          description="分隔条支持指针、方向键和双击复位；列表支持原生拖放与键盘排序。"
+        >
+          <ResizablePanel
+            className="h-72"
+            firstLabel="字段排序"
+            secondLabel="实时预览"
+            first={
+              <SortableList
+                items={sortableFields}
+                onReorder={setSortableFields}
+                label="字段顺序"
+                renderItem={(item, index) => (
+                  <div>
+                    <p className="text-sm font-medium">
+                      {index + 1}. {item.label}
+                    </p>
+                    <p className="text-xs text-muted-foreground">{item.description}</p>
+                  </div>
+                )}
+              />
+            }
+            second={
+              <div className="space-y-3">
+                <p className="font-medium">列预览</p>
+                <div className="flex flex-wrap gap-2">
+                  {sortableFields.map((item) => (
+                    <Badge key={item.id} variant="secondary">
+                      {item.label}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            }
+          />
+        </Section>
 
         <Section
           className="xl:col-span-2"

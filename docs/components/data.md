@@ -6,6 +6,15 @@ description: 数据展示：DataTable、可编辑表格、列表树、表格树�
 
 在线示例：`/design-system/data`。这一页是模板里最重的部分：表格、树、表格树、描述列表、时间线、分页与布局容器。
 
+## ResizablePanel / SortableList
+
+```tsx
+<ResizablePanel first={<List />} second={<Detail />} onSizeChange={setSize} />
+<SortableList items={fields} onReorder={setFields} renderItem={(item) => item.label} />
+```
+
+分割面板支持鼠标、触摸、方向键调宽和双击复位；通用排序列表支持原生拖放与方向键排序。
+
 ## DataTable
 
 基于 `@tanstack/react-table` 的列定义，外层包一层后台常用能力。

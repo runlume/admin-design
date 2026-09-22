@@ -132,6 +132,14 @@ Radix 的 `Slot` 只接受单个子元素。加载态需要插入图标，两者
 | `action`                | `ReactNode`                            | 底部操作区               |
 | `onClose`               | `() => void`                           | 传入后显示关闭按钮       |
 
+## Rate
+
+```tsx
+<Rate value={rating} onValueChange={setRating} precision={0.5} label="服务评分" />
+```
+
+支持整星或半星、清空、禁用态，以及方向键、Home、End 键盘操作。
+
 ## Progress
 
 ```tsx

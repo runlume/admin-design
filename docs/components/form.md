@@ -6,6 +6,15 @@ description: 表单与选择：表单组装、Combobox、级联、多选、日�
 
 在线示例：`/design-system/form`。
 
+## Calendar / Transfer
+
+```tsx
+<Calendar value={date} onValueChange={setDate} locale="zh-CN" />
+<Transfer items={roles} value={selectedRoles} onValueChange={setSelectedRoles} />
+```
+
+`Calendar` 提供完整月视图、跨月选择、日期范围和禁用日期；`Transfer` 提供搜索、批量勾选、禁用项与双向移动。
+
 ## 表单组装
 
 `Input` 的 `start` / `end` 插槽会自动把没写尺寸的图标压到 16px，不用每次自己加 `size-4`；

@@ -38,7 +38,7 @@ pnpm preview        # http://localhost:3201 to preview the build
 
 ## Use as an npm component library
 
-The base controls are also built as `@runlume/admin-ui`; the complete template and demo app remain in this
+Base controls, tables, filters, pagination, charts, and page states are built as `@runlume/admin-ui`; the complete template and demo app remain in this
 repository. After the package is published, install it with:
 
 ```bash
@@ -46,13 +46,15 @@ pnpm add @runlume/admin-ui
 ```
 
 ```tsx
-import { Button, Table } from '@runlume/admin-ui'
+import { Button, DataTable, EmptyState } from '@runlume/admin-ui'
 import '@runlume/admin-ui/styles.css'
 ```
 
-The package requires React 19. Maintainers run `pnpm pack --dry-run` before publishing; it rebuilds
-`dist-package/` and lists the exact package contents. Brand assets, example pages, app sessions, and notification
-state are not part of the library exports.
+The package supports React 18.2–19, ESM, and CommonJS. Fine-grained imports are available from paths such as
+`@runlume/admin-ui/components/data-table` and `@runlume/admin-ui/ui/button`. Missing host translations fall back
+to readable English instead of exposing i18n keys. Maintainers run `pnpm test:package` to pack and install the
+tarball into an empty React 18 project and verify ESM, CommonJS, subpath, and stylesheet exports. Brand assets,
+example pages, app sessions, and notification state are not part of the library exports.
 
 For a release, run `docs/scripts/publish-admin-ui-npm.sh`. It collects a npm Granular Access Token with
 `Bypass 2FA` through a hidden macOS dialog and never stores the credential in the repository or normal logs.

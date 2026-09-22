@@ -19,6 +19,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       # check = 格式检查 + 类型 + lint + 单元测试 + 生产构建
       - run: pnpm check
+      - run: pnpm test:package
       # 文档站独立构建，含死链检查
       - run: pnpm docs:build
       - run: pnpm exec playwright install --with-deps chromium

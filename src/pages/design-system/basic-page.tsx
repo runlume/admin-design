@@ -18,6 +18,7 @@ import { NumberField } from '@/components/ui/number-field'
 import { Slider } from '@/components/ui/slider'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
+import { Rate } from '@/components/rate'
 import { Section, DesignHeader } from './section'
 
 /** 基础控件：按钮、输入、选择、勾选、标签与快捷键标记。 */
@@ -28,6 +29,7 @@ export function DesignBasicPage() {
   const [tags, setTags] = useState(['正常', '待处理'])
   const [concurrency, setConcurrency] = useState(4)
   const [threshold, setThreshold] = useState([60])
+  const [rating, setRating] = useState(3.5)
   return (
     <>
       <DesignHeader title={t('gallery.basic')} />
@@ -201,6 +203,14 @@ export function DesignBasicPage() {
               并发数影响同步任务的资源占用，超过 20 需要平台管理员审批。
             </CollapsibleContent>
           </Collapsible>
+        </Section>
+
+        <Section title="评分" description="支持整星/半星、清空，以及方向键调整评分。">
+          <div className="flex items-center gap-3">
+            <Rate value={rating} onValueChange={setRating} precision={0.5} label="服务评分" />
+            <span className="text-sm text-muted-foreground">{rating || '未评分'} / 5</span>
+          </div>
+          <Rate defaultValue={4} disabled label="只读评分" />
         </Section>
 
         <Section
