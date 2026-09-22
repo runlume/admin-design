@@ -55,6 +55,46 @@ The package supports React 18.2–19, ESM, and CommonJS. Fine-grained imports ar
 to readable English instead of exposing i18n keys. Brand assets, example pages, and application state are not
 part of the library exports.
 
+## Changelog
+
+Only user-visible changes are listed here; see
+[Releases](https://github.com/runlume/admin-design/releases) for the full history.
+
+### Unreleased
+
+- Accessibility: while a modal overlay (dialog, sheet, dropdown menu, context menu, select) is open, the
+  background is marked with both `aria-hidden` and `inert`, fixing the axe `aria-hidden-focus` violation
+  and the "background controls are still tabbable" problem. The state is removed on close and never
+  applies to the overlay itself.
+- New accessibility gate `src/test/e2e/a11y.spec.ts`: full axe scans of the nine gallery pages in light and
+  dark mode, plus a scan for each opened overlay, asserting focus returns to the trigger and no `inert`
+  leaks into the background.
+- Contrast: the `warning` semantic color is darkened to meet AA (`--warning` `#9a6700` → `#946300`;
+  contrast against `--warning-soft` 4.44 → 4.74). Out-of-month calendar days, chart bars, and disabled
+  transfer rows no longer fall below 4.5:1.
+- Component semantics: rating stars are no longer nested buttons (the outer `role="slider"` owns value and
+  keyboard handling); transfer lists use `role="group"` instead of `listbox` (a checkbox group by nature);
+  the table corner cell is marked presentational; horizontally scrollable containers are focusable.
+- Tests: added the `@axe-core/playwright` devDependency (test-only, not shipped).
+
+### 0.2.2 (2026-09-22)
+
+- Refined the warning semantic color and half-star rendering.
+- Fixed language initialization being dropped from production builds.
+
+### 0.2.1 (2026-09-22)
+
+- Removed internal maintenance notes from the published package.
+- Synced version information across the site and docs.
+
+### 0.2.0 (2026-09-22)
+
+- Added the remaining advanced components and completed npm consumption (exports, types, styles entry).
+
+### 0.1.0 (2026-09-22)
+
+- First public release: standard admin theme and semantic tokens, layout shell, shared components, gallery.
+
 ## Verification
 
 ```bash
