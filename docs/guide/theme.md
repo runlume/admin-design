@@ -4,14 +4,26 @@ description: 主题与配色：语义 Token 的三处定义与分层、预设与
 
 # 主题与配色
 
-## 三处定义，责任分明
+## 各处定义，责任分明
 
-| 文件                      | 负责                                                                 |
-| ------------------------- | -------------------------------------------------------------------- |
-| `src/index.css`           | **默认方案的语义 Token**（青绿），以及 Token → Tailwind 工具类的映射 |
-| `src/palettes.css`        | 六套预设配色（`data-palette`）                                       |
-| `src/custom-palettes.css` | 基础色 × 主题色自由组合（`data-base-color` × `data-theme-color`）    |
-| `src/accessibility.css`   | 高对比、灰色、色弱、字号字重的覆盖                                   |
+| 文件                      | 负责                                                                                              |
+| ------------------------- | ------------------------------------------------------------------------------------------------- |
+| `src/theme.css`           | 主题层源码入口：**语义 Token 取值**（默认青绿）、Token → Tailwind 映射、元素级基础样式            |
+| `src/palettes.css`        | 六套预设配色（`data-palette`）                                                                    |
+| `src/custom-palettes.css` | 基础色 × 主题色自由组合（`data-base-color` × `data-theme-color`）                                 |
+| `src/accessibility.css`   | 高对比、灰色、色弱、字号字重的覆盖                                                                |
+| `src/admin-ui.css`        | 预构建完整入口：Tailwind（preflight + 工具类）+ `tw-animate-css` + `theme.css`，对应 `styles.css` |
+| `src/index.css`           | 演示站入口：Tailwind + `theme.css` + 演示与应用外壳自己的样式                                     |
+
+## 宿主如何接入
+
+| 场景                         | 引入方式                                                                                                    |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| 宿主已有 Tailwind v4 流水线  | `@import 'tailwindcss'; @import '@runlume/admin-ui/theme.css';`，工具类由宿主编译（推荐，不重复预构建产物） |
+| 非 Tailwind 宿主或想开箱即用 | `import '@runlume/admin-ui/styles.css'`（自带 preflight 与已编译工具类）                                    |
+
+`theme.css` 与仓库源码同源，发布包中该文件与其相对引入的 `palettes.css`、`custom-palettes.css`、
+`accessibility.css` 一起提供，因此宿主的 Tailwind 能按相对路径解析。
 
 **颜色只走语义 Token**：页面写 `bg-card`、`text-muted-foreground`、`border-border`、`text-success`，
 不写死色值。这样切主题、切配色、开高对比时业务代码零改动。

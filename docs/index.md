@@ -53,7 +53,7 @@ features:
 
 ## 快速开始
 
-只使用公共组件时，安装已发布的 `0.2.3`：
+只使用公共组件时，安装已发布的 `0.2.4`：
 
 ```bash
 pnpm add @runlume/admin-ui
@@ -62,6 +62,13 @@ pnpm add @runlume/admin-ui
 ```tsx
 import { Button, Calendar, DataTable, Transfer } from '@runlume/admin-ui'
 import '@runlume/admin-ui/styles.css'
+```
+
+宿主已有 Tailwind v4 流水线时，只引主题层即可（工具类由宿主编译，不必重复预构建产物）：
+
+```css
+@import 'tailwindcss';
+@import '@runlume/admin-ui/theme.css';
 ```
 
 需要完整后台模板、示例页面和主题配置时，再克隆仓库运行：
