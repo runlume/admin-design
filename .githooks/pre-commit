@@ -1,8 +1,5 @@
 #!/bin/sh
-# 提交前最小门禁：格式 + 类型 + lint + 单测。
-# 刻意不跑 e2e（太慢），e2e 留给 CI 与本地显式执行（pnpm verify）。
+# 提交前最小门禁：格式检查 + 文档站构建（含死链检查）+ 官网拼装。
+# 本仓库只有文档与静态页，不做单元测试与浏览器测试。
 set -e
-pnpm format:check
-pnpm typecheck
-pnpm lint
-pnpm test
+pnpm check
