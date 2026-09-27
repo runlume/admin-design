@@ -5,8 +5,8 @@ description: 开源协议：Apache-2.0 允许做什么、需要注意什么，�
 # 开源协议
 
 本项目采用 **Apache License 2.0**，完整文本见仓库根目录的
-[LICENSE](https://github.com/runlume/admin-design/blob/main/LICENSE)，署名信息见
-[NOTICE](https://github.com/runlume/admin-design/blob/main/NOTICE)。
+[LICENSE](https://github.com/runlume/admin-ui/blob/main/LICENSE)，署名信息见
+[NOTICE](https://github.com/runlume/admin-ui/blob/main/NOTICE)。
 
 ```text
 Copyright 2026 Runlume
@@ -26,7 +26,7 @@ Copyright 2026 Runlume
 | 保留声明   | 分发（含内部复制）时保留 `LICENSE` 的许可文本；本仓库带 `NOTICE`，分发时需一并提供其中的署名信息                                                                                                                  |
 | 标注改动   | 修改过的文件要注明"已修改"；整份复制进业务系统后，按自己的方式在改动文件上标注即可                                                                                                                                |
 | 商标       | 协议不授予商标权；`public/brand/` 下的标识属于品牌资产，替换成你自己的                                                                                                                                            |
-| 第三方依赖 | 模板依赖的 React / Radix UI / Tailwind / lucide / Geist 字体等各自遵循自身协议，完整清点与许可文本见 [第三方许可与署名](https://github.com/runlume/admin-design/blob/main/public/licenses/THIRD-PARTY-NOTICES.md) |
+| 第三方依赖 | 模板依赖的 React / Radix UI / Tailwind / lucide / Geist 字体等各自遵循自身协议，完整清点与许可文本见 [第三方许可与署名](https://github.com/runlume/admin-ui/blob/main/public/licenses/THIRD-PARTY-NOTICES.md) |
 
 ## 与 MIT 的差别
 

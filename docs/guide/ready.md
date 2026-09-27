@@ -34,7 +34,7 @@ pnpm docs:dev     # 文档站：http://localhost:3210
 
 ```text
 ╔════════════════════════════════════╗
-║    由 Runlume admin-design 驱动    ║
+║     由 Runlume admin-ui 驱动      ║
 ║                                    ║
 ║        https://runlume.app         ║
 ║                                    ║
@@ -66,7 +66,7 @@ pnpm docs:dev     # 文档站：http://localhost:3210
 | 端到端测试      | `pnpm test:e2e`                                      |
 | 改动后自证      | `pnpm check`（格式 + 类型 + lint + 单测 + 构建）     |
 | 完整验证        | `pnpm verify`（`check` + Playwright）                |
-| 截图评审        | `pnpm screenshots`（写入 `/tmp/admin-design-shots`） |
+| 截图评审        | `pnpm screenshots`（写入 `/tmp/admin-ui-shots`） |
 
 多人或多会话并行跑 Playwright 时，用 `pnpm test:e2e -- --output=/tmp/pw-admin-out` 隔离产物目录，
 否则共用 `test-results/` 会出现假失败。

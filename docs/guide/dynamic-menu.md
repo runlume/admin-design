@@ -58,7 +58,7 @@ description: 动态菜单与权限：后台下发菜单的字段约定、层级�
       "path": "/repository",
       "label": "GitHub 仓库",
       "icon": "github",
-      "external": "https://github.com/runlume/admin-design",
+      "external": "https://github.com/runlume/admin-ui",
       "target": "blank"
     },
     {

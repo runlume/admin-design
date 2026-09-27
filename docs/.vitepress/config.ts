@@ -134,7 +134,7 @@ export default defineConfig({
           url,
           inLanguage: 'zh-CN',
           isPartOf: { '@id': `${siteOrigin}/#website` },
-          license: 'https://github.com/runlume/admin-design/blob/main/LICENSE',
+          license: 'https://github.com/runlume/admin-ui/blob/main/LICENSE',
           publisher: { '@id': 'https://runlume.app/#organization' },
         },
         {
@@ -213,7 +213,7 @@ export default defineConfig({
     },
     outline: { level: [2, 3], label: '本页目录' },
     docFooter: { prev: '上一篇', next: '下一篇' },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/runlume/admin-design' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/runlume/admin-ui' }],
     darkModeSwitchLabel: '深浅模式',
     lightModeSwitchTitle: '切换到浅色模式',
     darkModeSwitchTitle: '切换到深色模式',

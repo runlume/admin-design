@@ -6,10 +6,20 @@ description: 作为模板使用：从复制目录、换菜单、接身份与接�
 
 复制到业务仓库后的改造顺序，按下面的步骤走完就能接真实接口。
 
-## 1. 复制整个目录
+## 1. 安装组件库
 
-把 `admin-design/` 复制成业务仓库（或作为子目录），改 `package.json` 的 `name`，
-执行 `pnpm install`。`docs/` 可以一起带走，也可以只保留 `src/`。
+```bash
+pnpm add @runlume/admin-ui
+```
+
+```css
+@import 'tailwindcss';
+@import '@runlume/admin-ui/theme.css';
+```
+
+外�shell（侧栏、顶栏、页签、设置弹窗）与文字都随包提供，接入方式见
+[快速开始](./getting-started.md)。想要一个能跑的应用骨架，直接看 `admin-react` 仓库，或用平台的
+「项目生成」生成一份裁剪过的工程。
 
 ## 2. 换菜单
 

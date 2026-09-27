@@ -61,7 +61,7 @@ CI 与本地钩子都用默认目录，人工并行验证时记得加参数。
 `src/test/e2e/_screenshots.spec.ts` 不是回归用例，默认跳过，需要显式开启：
 
 ```bash
-pnpm screenshots        # SCREENSHOTS=1，截图写入 /tmp/admin-design-shots
+pnpm screenshots        # SCREENSHOTS=1，截图写入 /tmp/admin-ui-shots
 ```
 
 改动布局或视觉后，先看截图再提交，比逐页点开快得多。

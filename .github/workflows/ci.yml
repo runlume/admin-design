@@ -17,17 +17,5 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # check = 格式检查 + 类型 + lint + 单元测试 + 生产构建
+      # check = 格式检查 + 文档站构建（含死链检查）+ 官网静态页构建
       - run: pnpm check
-      - run: pnpm test:package
-      # 文档站独立构建，含死链检查
-      - run: pnpm docs:build
-      - run: pnpm exec playwright install --with-deps chromium
-      # 对生产构建跑浏览器测试，防止 tree-shaking 裁掉仅靠副作用加载的初始化代码。
-      - run: PLAYWRIGHT_WEB_SERVER_COMMAND="pnpm build:test && pnpm preview --host 127.0.0.1 --port 3200" pnpm test:e2e
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: test-results/
-          retention-days: 7

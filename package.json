@@ -1,0 +1,30 @@
+{
+  "name": "@runlume/admin-design",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Runlume 标准后台的文档站与官网：设计系统说明、组件文档与两个站点产物",
+  "license": "Apache-2.0",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs && node scripts/build-llms.mjs",
+    "docs:preview": "vitepress preview docs --port 3211",
+    "site:build": "node scripts/build-site.mjs",
+    "site:preview": "python3 -m http.server -d _site 3299",
+    "og:build": "node scripts/make-og.mjs",
+    "format": "prettier --write docs site scripts README.md AGENTS.md",
+    "format:check": "prettier --check docs site scripts README.md AGENTS.md",
+    "check": "pnpm format:check && pnpm docs:build && pnpm site:build"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "prettier": "3.9.6",
+    "typescript": "~6.0.2",
+    "vitepress": "^1.6.4"
+  },
+  "packageManager": "pnpm@11.21.0",
+  "engines": {
+    "node": ">=24.0.0",
+    "pnpm": ">=11.0.0"
+  }
+}

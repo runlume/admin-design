@@ -19,7 +19,7 @@ hero:
       link: /guide/architecture
     - theme: alt
       text: GitHub
-      link: https://github.com/runlume/admin-design
+      link: https://github.com/runlume/admin-ui
     - theme: alt
       text: npm 组件库
       link: https://www.npmjs.com/package/@runlume/admin-ui
