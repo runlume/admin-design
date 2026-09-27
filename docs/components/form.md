@@ -24,8 +24,10 @@ description: 表单与选择：表单组装、Combobox、级联、多选、日�
 
 ```tsx
 <div className="grid gap-1.5">
-  <Label htmlFor="form-name">客户名称</Label>
-  <Input id="form-name" defaultValue="云和智能制造" clearable />
+  <Label htmlFor="form-name" required>
+    客户名称
+  </Label>
+  <Input id="form-name" required defaultValue="云和智能制造" clearable />
 </div>
 
 <div className="grid gap-1.5">
@@ -33,6 +35,10 @@ description: 表单与选择：表单组装、Combobox、级联、多选、日�
   <Input id="form-invalid" aria-invalid defaultValue="138" />
   <p className="text-xs text-destructive">手机号格式不正确</p>
 </div>
+
+`Label` 的 `required` 只渲染必填标记（`*`，`aria-hidden`）：读屏所需的"必填"语义来自控件上的
+`required` 或 `aria-required`，两者要一起写。校验时机由表单决定——推荐提交时统一校验，
+不要在一次都没提交前就把所有字段标红。
 
 <FixedBar hint="表单校验通过后才会写入业务接口">
   <Button variant="outline">取消</Button>
