@@ -14,7 +14,7 @@ description: Agent 工作流：命令入口、改动流程与提交前检查清�
 | 完整验证          | `pnpm verify`（`check` + Playwright）                              |
 | 只跑单元测试      | `pnpm test`                                                        |
 | 只跑端到端        | `pnpm test:e2e -- --output=/tmp/pw-admin-out`                      |
-| 截图评审          | `pnpm screenshots`（写入 `/tmp/admin-ui-shots`）               |
+| 截图评审          | `pnpm screenshots`（写入 `/tmp/admin-ui-shots`）                   |
 | 格式化            | `pnpm format`（`format:check` 已并入 `check`）                     |
 | 文档站开发 / 构建 | `pnpm docs:dev` / `pnpm docs:build`（产物 `docs/.vitepress/dist`） |
 

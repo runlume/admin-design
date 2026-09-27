@@ -17,9 +17,9 @@ pnpm add @runlume/admin-ui
 @import '@runlume/admin-ui/theme.css';
 ```
 
-外�shell（侧栏、顶栏、页签、设置弹窗）与文字都随包提供，接入方式见
-[快速开始](./getting-started.md)。想要一个能跑的应用骨架，直接看 `admin-react` 仓库，或用平台的
-「项目生成」生成一份裁剪过的工程。
+外壳（侧栏、顶栏、页签、设置弹窗）与文案都随包提供，布局与接入方式见
+[布局外壳](./layout.md)。想要一个能跑的应用骨架，直接看同级目录的 `admin-react` 仓库，
+或用平台的「项目生成」生成一份裁剪过的工程。
 
 ## 2. 换菜单
 

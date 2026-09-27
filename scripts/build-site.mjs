@@ -82,8 +82,20 @@ console.log(assets.map(([file, version]) => `${file}?v=${version}`).join(' · ')
  */
 const origin = 'https://adesign.runlume.app'
 const pages = [
-  { file: 'index.html', path: '/', lang: 'zh-CN', title: '标准后台设计', summary: '宣传页：项目说明、三个入口与快速开始' },
-  { file: 'en.html', path: '/en.html', lang: 'en', title: 'Admin Design', summary: 'Landing page: overview, entry points and quick start' },
+  {
+    file: 'index.html',
+    path: '/',
+    lang: 'zh-CN',
+    title: '标准后台设计',
+    summary: '宣传页：项目说明、三个入口与快速开始',
+  },
+  {
+    file: 'en.html',
+    path: '/en.html',
+    lang: 'en',
+    title: 'Admin Design',
+    summary: 'Landing page: overview, entry points and quick start',
+  },
 ]
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -134,32 +146,58 @@ const markdownOf = (html) => {
       .trim()
   const pick = (pattern) => flat(html.match(pattern)?.[1])
   const all = (pattern, block) =>
-    [...(block ?? html).matchAll(pattern)].map((match) => match.slice(1).map((value) => flat(value)))
+    [...(block ?? html).matchAll(pattern)].map((match) =>
+      match.slice(1).map((value) => flat(value)),
+    )
   const lines = []
   const h1 = pick(/<h1[^>]*>([\s\S]*?)<\/h1>/)
   const kicker = pick(/<p class="kicker">([\s\S]*?)<\/p>/)
-  const lead = flat(html.match(/<p class="tagline">([\s\S]*?)<\/p>/)?.[1]) || pick(/<p class="lead">([\s\S]*?)<\/p>/)
+  const lead =
+    flat(html.match(/<p class="tagline">([\s\S]*?)<\/p>/)?.[1]) ||
+    pick(/<p class="lead">([\s\S]*?)<\/p>/)
   if (kicker) lines.push(`> ${kicker}`)
   lines.push(`# ${h1}`, '', lead, '')
-  const routes = all(/<strong>([\s\S]*?)<\/strong><span class="desc">([\s\S]*?)<\/span>[\s\S]*?<a href="([^"]+)"/g)
-  if (routes.length) lines.push('## 入口', '', ...routes.map(([name, desc, href]) => `- ${name}（${href}）：${desc}`), '')
+  const routes = all(
+    /<strong>([\s\S]*?)<\/strong><span class="desc">([\s\S]*?)<\/span>[\s\S]*?<a href="([^"]+)"/g,
+  )
+  if (routes.length)
+    lines.push(
+      '## 入口',
+      '',
+      ...routes.map(([name, desc, href]) => `- ${name}（${href}）：${desc}`),
+      '',
+    )
   const features = all(/<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)
-  if (features.length) lines.push('## 能力', '', ...features.map(([title, body]) => `- **${title}**：${body}`), '')
+  if (features.length)
+    lines.push('## 能力', '', ...features.map(([title, body]) => `- **${title}**：${body}`), '')
   const cats = all(/<strong>([\s\S]*?)<\/strong>\s*<small>([\s\S]*?)<\/small>/g)
-  if (cats.length) lines.push('', '## 组件索引', '', ...cats.map(([name, keys]) => `- ${name}：${keys}`), '')
+  if (cats.length)
+    lines.push('', '## 组件索引', '', ...cats.map(([name, keys]) => `- ${name}：${keys}`), '')
   const stepsBlock = html.match(/<ol class="steps">([\s\S]*?)<\/ol>/)?.[1] ?? ''
   const steps = [...stepsBlock.matchAll(/<li>([\s\S]*?)<\/li>/g)].map((match, index) => [
     String(index + 1),
     flat(match[1]),
   ])
-  if (steps.length) lines.push('', '## 快速开始', '', ...steps.map(([n, text]) => `${Number(n)}. ${text}`), '')
+  if (steps.length)
+    lines.push('', '## 快速开始', '', ...steps.map(([n, text]) => `${Number(n)}. ${text}`), '')
   const code = html.match(/<pre[^>]*>([\s\S]*?)<\/pre>/)?.[1]
   if (code) lines.push('', '```bash', code.replace(/<[^>]+>/g, '').trim(), '```', '')
-  lines.push('', '## 相关入口', '', '- 文档站：https://adoc.runlume.app', '- 在线演示：https://ago.runlume.app', '- 源码（Apache-2.0）：https://github.com/runlume/admin-design', '')
+  lines.push(
+    '',
+    '## 相关入口',
+    '',
+    '- 文档站：https://adoc.runlume.app',
+    '- 在线演示：https://ago.runlume.app',
+    '- 源码（Apache-2.0）：https://github.com/runlume/admin-design',
+    '',
+  )
   return lines.filter((line, index, all) => line !== '' || all[index - 1] !== '').join('\n')
 }
 
-for (const [file, markdown] of [['index.html', 'index.md'], ['en.html', 'en.md']]) {
+for (const [file, markdown] of [
+  ['index.html', 'index.md'],
+  ['en.html', 'en.md'],
+]) {
   const html = await readFile(join(out, file), 'utf8')
   await writeFile(join(out, markdown), `${markdownOf(html)}\n`)
 }

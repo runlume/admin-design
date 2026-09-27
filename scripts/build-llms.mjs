@@ -18,7 +18,8 @@ async function collect(dir) {
   const entries = await readdir(dir, { withFileTypes: true })
   const files = []
   for (const entry of entries) {
-    if (entry.name.startsWith('.') || entry.name === 'public' || entry.name === 'node_modules') continue
+    if (entry.name.startsWith('.') || entry.name === 'public' || entry.name === 'node_modules')
+      continue
     const path = join(dir, entry.name)
     if ((await lstat(path)).isSymbolicLink()) continue
     if (entry.isDirectory()) files.push(...(await collect(path)))
