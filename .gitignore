@@ -8,6 +8,7 @@ node_modules/
 admin-ui/
 admin-react/
 
-# IDE 与系统文件
+# IDE 与系统文件（.idea/ 是本地配置，不入库）
+.idea/
 .DS_Store
 *.log
